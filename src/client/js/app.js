@@ -44,7 +44,6 @@ function performAction(e) {
 
       // select result div
 
-
       seeTrip(data);
 
       // add the latest trip to the search history and we can get the latest from this array
