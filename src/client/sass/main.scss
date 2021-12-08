@@ -17,6 +17,7 @@ body {
   line-height: 1.5;
   font-weight: 500;
   color: #374151; // 700 gray
+  background-color: #eff6ff;
 }
 
 h2 {
@@ -26,11 +27,55 @@ h2 {
 
 //----- HEADER -----//
 .header {
-  height: 100vh;
-  background-color: #eff6ff;
+  min-height: 100vh;
 
   display: grid;
-  grid-template-columns: 7fr 3fr;
+  grid-template-columns: 1fr auto;
+}
+
+// ----- TRIPS -----//
+.trips {
+  width: 140rem;
+  margin: 0 auto;
+  padding: 2.4rem 0;
+  margin-bottom: 8rem;
+
+  h2 {
+    margin-bottom: 6.4rem;
+  }
+
+  &__list {
+    padding: 0 3.2rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 3.2rem;
+    justify-content: center;
+  }
+}
+
+.trip-card {
+  font-size: 1.6rem;
+  display: inline-block;
+  width: 30rem;
+  background-color: #e9f2fd;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.1);
+
+  img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: 2.4rem 2.4rem 3.6rem 2.4rem;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+    padding-bottom: 0.5rem;
+  }
 }
 
 //----- INFO -----//
@@ -118,5 +163,133 @@ h2 {
 
   &:active {
     background-color: #1f2937;
+  }
+}
+
+// media queries for 1600 and below
+@media screen and (max-width: 1600px) {
+  h2 {
+    font-size: 3.2rem;
+  }
+
+  // ----- TRIPS -----//
+  .trips {
+    width: 112rem;
+    padding: 1.6rem 0;
+
+    h2 {
+      margin-bottom: 4.8rem;
+    }
+
+    &__list {
+      padding: 0 2.4rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.4rem;
+    }
+  }
+
+  .trip-card {
+    width: 28rem;
+
+    img {
+      height: 16rem;
+    }
+
+    &__content {
+      padding: 1.6rem 1.6rem 2.4rem 1.6rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  //----- INFO -----//
+  .info {
+    margin: 3.2rem;
+
+    &__text {
+      font-size: 1.8rem;
+      padding: 1.6rem 2.4rem;
+    }
+  }
+
+  .trip-info {
+    &__list {
+      font-size: 2rem;
+    }
+
+    &__weather-list {
+      padding: 1.6rem 0 0 1.6rem;
+    }
+  }
+
+  // ----- FORM -----//
+  .form {
+    gap: 1.6rem;
+    padding: 6.4rem;
+  }
+
+  /// ----- COMPONENTS -----//
+  .input {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.4rem;
+  }
+
+  // button
+  .btn {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.8rem;
+  }
+}
+
+// media queries for 1200 and below
+@media screen and (max-width: 1200px) {
+  .trips {
+    width: 100%;
+  }
+}
+
+// media queries for 900 and below
+@media screen and (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .trips__list {
+    grid-template-columns: auto auto;
+    gap: 3.6rem;
+  }
+
+  .info {
+    height: 50rem;
+    border-radius: 3rem;
+  }
+
+  .info__text {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+// media queries for 600 and below
+@media screen and (max-width: 600px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .trips__list {
+    grid-template-columns: auto;
+    gap: 3.6rem;
+  }
+
+  .info {
+    height: 50rem;
+    border-radius: 3rem;
+  }
+
+  .info__text {
+    width: 100%;
+    border-radius: 0;
   }
 }
