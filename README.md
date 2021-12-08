@@ -23,7 +23,7 @@ Additional description about the project and its features.
 
 ## Course
 
-[Udacoty Frontend nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
+[Udacity Frontend nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
 ## Getting Started
 
