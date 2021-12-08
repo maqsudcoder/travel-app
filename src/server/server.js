@@ -10,6 +10,9 @@ projectData = {
   isWorking: true,
 };
 
+// dotenv
+require('dotenv').config();
+
 const fetch = require('cross-fetch');
 
 // Setup express server
@@ -53,14 +56,14 @@ app.post('/data', (req, res) => {
   console.log('🌠 - something come from user', projectData.city);
 
   // setup geonames API
-  fetch(`http://api.geonames.org/searchJSON?q=${projectData.city}&maxRows=1&username=zeroonecoder`)
+  fetch(`http://api.geonames.org/searchJSON?q=${projectData.city}&maxRows=1&username=${process.env.GEONAMES_USERNAME}`)
     .then((response) => response.json())
     .then((geonames) => {
       console.log('🌍 - geonames is rolling');
       projectData.countryName = geonames.geonames[0].countryName;
 
       // setup weatherbit API
-      fetch(`https://api.weatherbit.io/v2.0/current?lat=${geonames.geonames[0].lat}&lon=${geonames.geonames[0].lng}&key=d1bca8f588874df4a15b7e706710055a`)
+      fetch(`https://api.weatherbit.io/v2.0/current?lat=${geonames.geonames[0].lat}&lon=${geonames.geonames[0].lng}&key=${process.env.WEATHERBIT_API_KEY}`)
         .then((response) => response.json())
         .then((weatherbit) => {
           console.log('🥵 - weather is reported');
@@ -69,7 +72,7 @@ app.post('/data', (req, res) => {
           projectData.realFeel = weatherbit.data[0].app_temp;
 
           // setup openweathermap API
-          fetch(`https://pixabay.com/api/?key=24477470-8799ddabee2db635f78a760ff&q=${projectData.city}&image_type=photo&pretty=true`)
+          fetch(`https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${projectData.city}&image_type=photo&pretty=true`)
             .then((response) => response.json())
             .then((pixabay) => {
               console.log('🖼️ - pixabay img is ready');
