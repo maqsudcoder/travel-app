@@ -4,9 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel app</title>
+    <title>Tourian</title>
   </head>
   <body>
+    <header class="header">
+      <div class="info" id="info">
+        <div class="info__text">
+          <h3>City: <span id="city-name-mini">City</span>, <span id="country-name-mini">Country name</span></h3>
+        </div>
+      </div>
+      <div class="form">
+        <h2>Search for a trip</h2>
+        <input class="input" type="text" id="city" placeholder="City name" value="London" required />
+        <input class="input" type="date" id="date" placeholder="Starting date" required />
+        <button class="btn btn--see" id="submit">See trip info</button>
+        <button class="btn btn--book" id="add">Book a trip</button>
+
+        <div class="trip-info">
+          <h2>Trip info</h2>
+          <div class="trip-info__list">
+            <p>My trip to <span id="city-name">City</span>, <span id="country-name">Country name</span></p>
+            <p>Starting date: <span id="starting-date">01.01.2020</span></p>
+            <p>Days to go: <span id="days-left">10</span></p>
+            <div class="trip-info__weather">
+              <p>Typical weather for then:</p>
+              <div class="trip-info__weather-list">
+                <p><ion-icon name="thermometer-outline"></ion-icon> Temprature - <span id="temp">15</span>&deg;C</p>
+                <p><ion-icon name="accessibility-outline"></ion-icon> Feels - <span id="realFeel">9</span>&deg;C</p>
+                <p><ion-icon name="earth-outline"></ion-icon> Sky - <span id="sky">A few clouds</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- remo old below later -->
     <div class="user-input">
       <input type="text" name="city" id="city" placeholder="city" />
       <input type="date" name="date" id="date" />
@@ -16,9 +49,13 @@
 
     <div class="result">
       <div id="report"></div>
-      <img src="" id="img">
+      <img src="" id="img" />
     </div>
 
     <ul class="trips" id="trips"></ul>
+
+    <!-- ion icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
