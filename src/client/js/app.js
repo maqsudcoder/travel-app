@@ -35,6 +35,7 @@ function performAction(e) {
     },
     body: JSON.stringify({
       city: cityVl,
+      date: dateVl,
     }),
   })
     .then((response) => response.json())
@@ -44,6 +45,10 @@ function performAction(e) {
       // select result div
       document.getElementById('report').innerHTML = `${data.city}, ${data.countryName} is ${Client.getDate(dateVl)} days away, weather is ${data.weather}`;
       document.getElementById('img').src = data.img;
+      document.getElementById('info').style.backgroundImage = 'url(' + data.img + ')';
+      console.log(document.getElementById('info'));
+
+      seeTrip(data);
 
       // add the latest trip to the search history and we can get the latest from this array
       latestTrip.push(data);
@@ -95,5 +100,16 @@ function updateUI() {
   console.log('🍀 - done updating UI');
 }
 
-
 // refresh qigandan keyin ishlamayabdi
+
+function seeTrip(data) {
+  document.getElementById('city-name').innerHTML = data.city;
+  document.getElementById('city-name-mini').innerHTML = data.city;
+  document.getElementById('country-name').innerHTML = data.countryName;
+  document.getElementById('country-name-mini').innerHTML = data.countryName;
+  document.getElementById('starting-date').innerHTML = data.date;
+  document.getElementById('days-left').innerHTML = Client.getDate(data.date);
+  document.getElementById('temp').innerHTML = data.temp;
+  document.getElementById('realFeel').innerHTML = data.realFeel;
+  document.getElementById('sky').innerHTML = data.weather;
+}

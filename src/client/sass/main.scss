@@ -1,0 +1,122 @@
+//// font
+@import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600;700&display=swap');
+
+//// GLOBAL SETUq
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Ibarra Real Nova', sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #374151; // 700 gray
+}
+
+h2 {
+  font-size: 4.4rem;
+  font-weight: 500;
+}
+
+//----- HEADER -----//
+.header {
+  height: 100vh;
+  background-color: #eff6ff;
+
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+
+//----- INFO -----//
+.info {
+  background-image: url(https://cdn.dribbble.com/users/1731254/screenshots/11649852/nature_gradients_illustration_tubikarts_4x.png);
+  background-size: cover;
+  background-position: center;
+  border-radius: 5rem 5rem 5rem 3rem;
+  // inner shadow
+  box-shadow: inset 0 0 2rem rgba(9, 42, 61, 0.5);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 4.8rem;
+
+  &__text {
+    font-size: 2rem;
+    backdrop-filter: blur(2rem);
+    color: #374151;
+    background-color: #eff6ff;
+    border-top-right-radius: 3rem;
+
+    display: inline-block;
+    padding: 2.4rem 3.2rem;
+  }
+}
+
+.trip-info {
+  align-self: flex-start;
+
+  &__list {
+    font-size: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  &__weather-list {
+    padding: 2.4rem 0 0 2.4rem;
+  }
+}
+
+// ----- FORM -----//
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 8rem;
+}
+
+/// ----- COMPONENTS -----//
+.input {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 0.1rem solid #374151;
+  background-color: #eff6ff;
+  padding: 1.6rem 3.2rem;
+  font-size: 1.6rem;
+  color: #374151;
+
+  &:nth-child(3) {
+    margin-bottom: 1.6rem;
+  }
+}
+
+// button
+.btn {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 0.1rem solid #eff6ff;
+  background-color: #374151;
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  color: #eff6ff;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #4b5563;
+  }
+
+  &:active {
+    background-color: #1f2937;
+  }
+}

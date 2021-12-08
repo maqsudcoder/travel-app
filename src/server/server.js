@@ -48,6 +48,7 @@ app.get('/all', (req, res) => {
 app.post('/data', (req, res) => {
   // city name from user
   projectData.city = req.body.city;
+  projectData.date = req.body.date;
 
   console.log('🌠 - something come from user', projectData.city);
 
@@ -64,13 +65,15 @@ app.post('/data', (req, res) => {
         .then((weatherbit) => {
           console.log('🥵 - weather is reported');
           projectData.weather = weatherbit.data[0].weather.description;
+          projectData.temp = weatherbit.data[0].temp;
+          projectData.realFeel = weatherbit.data[0].app_temp;
 
           // setup openweathermap API
           fetch(`https://pixabay.com/api/?key=24477470-8799ddabee2db635f78a760ff&q=${projectData.city}&image_type=photo&pretty=true`)
             .then((response) => response.json())
             .then((pixabay) => {
               console.log('🖼️ - pixabay img is ready');
-              projectData.img = pixabay.hits[0].webformatURL;
+              projectData.img = pixabay.hits[Math.floor(Math.random() * 20)].webformatURL;
 
               // final response
               res.send(projectData);
