@@ -38,24 +38,39 @@
         </div>
       </div>
     </header>
-
-    <!-- remo old below later -->
-    <div class="user-input">
-      <input type="text" name="city" id="city" placeholder="city" />
-      <input type="date" name="date" id="date" />
-      <button type="button" id="submit">See the info</button>
-      <button type="button" id="add">Save trip</button>
-    </div>
-
-    <div class="result">
-      <div id="report"></div>
-      <img src="" id="img" />
-    </div>
-
-    <ul class="trips" id="trips"></ul>
+    <section class="trips">
+      <h2><ion-icon name="flame-outline"></ion-icon> Your trips this year</h2>
+      <div class="trips__list">
+        <div class="trip-card">
+          <img src="https://cdn.europosters.eu/image/750/posters/paris-view-over-paris-i21042.jpg" alt="city image" />
+          <div class="trip-card__content">
+            <h3>this is test</h3>
+            <p>Your trip starts in 7 days</p>
+            <div class="trips-card__weather">
+              <p>Weather report</p>
+              <div class="trips-card__weather-list">
+                <p><ion-icon name="thermometer-outline"></ion-icon> Temprature - <span>15</span>&deg;C</p>
+                <p><ion-icon name="accessibility-outline"></ion-icon> Feels - <span>9</span>&deg;C</p>
+                <p><ion-icon name="earth-outline"></ion-icon> Sky - <span>A few clouds</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ion icons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
   </body>
 </html>

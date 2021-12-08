@@ -43,10 +43,7 @@ function performAction(e) {
       console.log('👟 - data received from server: ', data);
 
       // select result div
-      document.getElementById('report').innerHTML = `${data.city}, ${data.countryName} is ${Client.getDate(dateVl)} days away, weather is ${data.weather}`;
-      document.getElementById('img').src = data.img;
-      document.getElementById('info').style.backgroundImage = 'url(' + data.img + ')';
-      console.log(document.getElementById('info'));
+
 
       seeTrip(data);
 
@@ -85,7 +82,7 @@ function updateUI() {
   localStorage.setItem('trips', JSON.stringify(trips));
 
   const storedTrips = JSON.parse(localStorage.getItem('trips'));
-  const tripsEl = document.getElementById('trips');
+  const tripsEl = document.querySelector('.trips__list');
 
   // removes all the trips from the UI
   while (tripsEl.firstChild) {
@@ -94,7 +91,21 @@ function updateUI() {
 
   // add the latest trip to the UI
   for (let i = 0; i < storedTrips.length; i++) {
-    tripsEl.innerHTML += `<li>City: ${storedTrips[i].city}</li>`;
+    tripsEl.innerHTML += `<div class="trip-card">
+          <img src="${trips[i].img}" alt="city image" />
+          <div class="trip-card__content">
+            <h3>${trips[i].city}, ${trips[i].countryName}</h3>
+            <p>Your trip starts in ${Client.getDate(trips[i].date)} days</p>
+            <div class="trips-card__weather">
+              <p>Weather report</p>
+              <div class="trips-card__weather-list">
+                <p><ion-icon name="thermometer-outline"></ion-icon> Temprature - <span>${trips[i].temp}</span>&deg;C</p>
+                <p><ion-icon name="accessibility-outline"></ion-icon> Feels - <span>${trips[i].realFeel}</span>&deg;C</p>
+                <p><ion-icon name="earth-outline"></ion-icon> Sky - <span>${trips[i].weather}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>`;
   }
 
   console.log('🍀 - done updating UI');
@@ -103,6 +114,7 @@ function updateUI() {
 // refresh qigandan keyin ishlamayabdi
 
 function seeTrip(data) {
+  // I bet you cannot understand this code
   document.getElementById('city-name').innerHTML = data.city;
   document.getElementById('city-name-mini').innerHTML = data.city;
   document.getElementById('country-name').innerHTML = data.countryName;
@@ -112,4 +124,5 @@ function seeTrip(data) {
   document.getElementById('temp').innerHTML = data.temp;
   document.getElementById('realFeel').innerHTML = data.realFeel;
   document.getElementById('sky').innerHTML = data.weather;
+  document.getElementById('info').style.backgroundImage = 'url(' + data.img + ')';
 }
